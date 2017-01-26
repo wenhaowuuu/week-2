@@ -66,7 +66,9 @@
 
       var addMarkers = function(map) {
         for (i=0;i<healthCenters.length;i++){
-        L.marker([healthCenters[i][0],healthCenters[i][1]]).bindPopup(healthCenters[i][3]).addTo(map);
+          if(healthCenters[i][5]<=19149 && healthCenters[i][5]>=19140 ){
+            L.marker([healthCenters[i][0],healthCenters[i][1]]).bindPopup(healthCenters[i][3]).addTo(map);
+          }
         };
       }
 
