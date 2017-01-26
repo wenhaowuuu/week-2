@@ -54,21 +54,50 @@
       Start code
 
       ===================== */
+      var jsonToCsv = function(json) { console.log(json);
+        console.log(json);
+        var CSV = [['LNG','LAT','OBJECTID','NAME','ORGANIZATION','ZIP','PHONE','WEBSITE','DENTAL_PHONE','FULL_ADDRESS']];
+        for(i=0;i<json.length;i++){
+          CSV.push(json[i].LNG,json[i].LAT,json[i].OBJECTID,json[i].NAME,json[i].ORGANIZATION,json[i].ZIP,json[i].PHONE,json[i].WEBSITE,json[i].DENTAL_PHONE,json[i].FULL_ADDRESS)
+        }
+        console.log(CSV);
+      };
 
-      var jsonToCsv = function(json) { console.log(json); };
 
+      var addMarkers = function(map) {
+        for (i=0;i<healthCenters.length;i++){
+        L.marker([healthCenters[i][0],healthCenters[i][1]]).bindPopup(healthCenters[i][3]).addTo(map);
+        };
+      }
 
-      var addMarkers = function(map) {};
+      var icon1 = L.icon({
+          iconUrl:'dental_1.png',
+          iconRetinaUrl:'dental_2.png',
+          iconSize:[38,95],
+          iconAnchor:[22,94],
+          popupAnchor:[-3,-76],
+          shadowUrl:'marker-shadow.png',
+          shadowSize:[68,95],
+          shadowAnchor:[22,94]
+      });
+
+      var addDentalMarkers = function(map){
+        for (i=0;i<healthCenters.length;i++){
+          if(healthCenters.DENTAL_PHONE!="N/A"){
+            L.marker([healthCenters[i][0],healthCenters[i][1]],{icon:icon1}).bindPopup(healthCenters[i][3]).addTo(map);
+          }
+        };
+      }
 
       /* =====================
 
       End code
 
       ===================== */
-
-
+      //run the data conversion function
       jsonToCsv(healthCenters);
       addMarkers(map);
+      addDentalMarkers(map);
     </script>
     <!--Your code ends here-->
   </body>

@@ -54,7 +54,9 @@
     restaurant. Refer to the Leaflet documentation for instructions on adding
     a popup: http://leafletjs.com/reference.html#popup
 
+
     ===================== */
+    var restaurantData = [[39.9563,-75.1572,'Vietnam Restaurant'],[39.9415, -75.1493,'PhillyCheasteak'],[39.9599, -75.1906,'Sabrina'],[39.9669, -75.1306,'random1'],[39.9219, -75.2102,'random2']];
 
     var map = L.map('map', {
       center: [39.9522, -75.1639],
@@ -68,6 +70,14 @@
       maxZoom: 20,
       ext: 'png'
     }).addTo(map);
+
+    // var j = 0;
+    for (i=0;i<5;i++){
+    L.marker([restaurantData[i][0],restaurantData[i][1]]).bindPopup(restaurantData[i][2]).addTo(map);
+    }
+
+
+
 
     /* =====================
 

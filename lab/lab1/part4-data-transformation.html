@@ -62,8 +62,44 @@
     if their formatting is especially wrong. But it should accommodate most points.
 
     ===================== */
-
     var data = bikeArrayClean;
+    console.log(data);
+    var dataFiltered = [ ];
+    for (i=0;i<73;i++){
+      if (data[i][3]>20){
+      dataFiltered.push(data[i]);}
+    }
+
+    console.log(dataFiltered);
+
+    var datadirty = bikeArrayDirty;
+    console.log(datadirty);
+    var dataFiltered1 = [ ];
+    for (i=0;i<73;i++){
+      if(datadirty[i][3].includes("stations")){
+            datadirty[i][3].replace(" stations","");
+            var n = number(datadirty[i][3]);
+            if(n>20){
+              dataFiltered1.push(datadirty[i]);}
+            }
+      }
+
+    var map = L.map('map', {
+      center: [39.9522, -75.1639],
+      zoom: 14
+    });
+
+    var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      subdomains: 'abcd',
+      minZoom: 0,
+      maxZoom: 20,
+      ext: 'png'
+    }).addTo(map);
+
+    for (i=0;i<dataFiltered1.length;i++){
+      L.marker([dataFiltered1[i][0],dataFiltered1[i][1]]).bindPopup(dataFiltered1[i][2]).addTo(map);
+    }
 
     /* =====================
 
@@ -78,19 +114,19 @@
     End code to filter data
 
     ===================== */
-
-    var map = L.map('map', {
-      center: [39.9522, -75.1639],
-      zoom: 14
-    });
-
-    var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
-      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      subdomains: 'abcd',
-      minZoom: 0,
-      maxZoom: 20,
-      ext: 'png'
-    }).addTo(map);
+    //
+    // var map = L.map('map', {
+    //   center: [39.9522, -75.1639],
+    //   zoom: 14
+    // });
+    //
+    // var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.{ext}', {
+    //   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    //   subdomains: 'abcd',
+    //   minZoom: 0,
+    //   maxZoom: 20,
+    //   ext: 'png'
+    // }).addTo(map);
 
     /* =====================
 
