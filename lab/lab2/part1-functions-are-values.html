@@ -50,13 +50,12 @@
       ===================== */
 
       // Store sum you compute in this variable:
-      var yourSum = 0;
 
       // Refactor is a word programmers sometimes use which can be translated as 'rewrite'.
 
       // Your first task in this lab will be to refactor the example code from above
       //  into a few different functions that are reusable to the extent that you can.
-      // One possible refactor would be to write a function that does one iteration of
+      //  One possible refactor would be to write a function that does one iteration of
       //  all of the work in the loop above. With such a function, we separate the logic
       //  which iterates over our array (the loop) from the logic which carries out a
       //  single run within the loop.
@@ -66,15 +65,25 @@
       //  works! You should see 'Success: true' if all goes well.
 
       /* Define your function here */
-
-      for (var i = 0; i < theArray.length, i++) { /* Inside the loop*/ }
-
+      var sum = 0;
+      var summing = function(item){
+          if (typeof item === 'string'){
+            sum = sum + item.length
+          } else if (typeof item === 'number'){
+            sum = sum + item
+          } else {
+           consle.log("what's going on with this value: ", item)
+      }
+      for (var i = 0; i < theArray.length; i++) {
+        summing(theArray[i]);
+       /* Inside the loop*/
+      }
       /* =====================
 
       End code
 
       ===================== */
-      console.log("Success: ", yourSum === 169)
+      console.log("Success: ", sum === 169)
     </script>
   </body>
 </html>

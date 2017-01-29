@@ -24,13 +24,37 @@
     If you complete problem 1, move on to problem 2!
 
     ===================== */
-
-
     /* =====================
 
     Start code
 
     ===================== */
+    var sum = 0
+    var summing = function(item){
+      if (item%3 === 0||item%5 === 0){
+        sum = sum + item;
+      }
+    }
+
+    for (i=0;i<1000;i++){
+      summing(i)
+    }
+    console.log(sum)
+
+    var sum1 = 0
+    var i = 1
+    var j = 2
+    while (i<4000000&&j<4000000){
+      i = i + j
+      if(i%2 === 0){
+        sum1 = sum1 + i
+      }
+      j = i + j
+      if (j%2 == 0){
+        sum1 = sum1 + j
+      }
+    }
+    console.log(sum1)
 
 
 
