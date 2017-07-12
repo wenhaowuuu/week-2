@@ -11,7 +11,6 @@
 
     <!--javascript-->
     <script>
-
       /* =====================
 
       # Lab 2, Part 1 — Functions help us organize our code (and our thoughts)
@@ -41,8 +40,9 @@
         } else {                                      // Otherwise
           console.log("Not sure how to proceed with value:", arrayValue)
         }
-      }
+      };
 
+      console.log(exampleSum);
       /* =====================
 
       Start your code below
@@ -72,18 +72,24 @@
           } else if (typeof item === 'number'){
             sum = sum + item
           } else {
-           consle.log("what's going on with this value: ", item)
+           console.log("what's going on with this value: ", item)
+           return sum;
       }
-      for (var i = 0; i < theArray.length; i++) {
-        summing(theArray[i]);
-       /* Inside the loop*/
+    }
+    // console.log("111");
+
+      for (var j = 0; j < theArray.length; j++) {
+        var value = theArray[j];
+        summing(value);
       }
+      console.log(sum);
+      console.log("Success:"+ (sum == 169));
       /* =====================
 
       End code
 
       ===================== */
-      console.log("Success: ", sum === 169)
+
     </script>
   </body>
 </html>
